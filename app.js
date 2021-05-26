@@ -42,9 +42,11 @@ app.use(async (req, res, next) => {
 
 app.use('/', express.static(path.join(__dirname, './build')))
 
+
 app.use('/account',accountRouter)
 
 app.use('/vote',voteRouter)
+app.use("/icons",express.static(path.resolve(__dirname,"icons"))) 
 
 app.use('/uploads', express.static(path.resolve(__dirname, 'uploads')))
 

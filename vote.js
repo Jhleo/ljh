@@ -15,7 +15,6 @@ io.on('connection', socket => {//socket.io连接对象
   })
 // POST /vote/create
 
-
 // GET /vote/get/:id
 voteRouter.get('/get/:id',async(req,res,next)=>{
     let vote= await Vote.findByPk(req.params.id)
@@ -143,18 +142,10 @@ voteRouter.post('/cancel/:optionId', async (req, res, next) => {
       })
     }
   })
-//PUT /vote/5
-voteRouter.put('/create',async(req,res,next)=>{
-    
-})
-// DELETE /vote/5
-voteRouter.delete('/create',async(req,res,next)=>{
-    
-})
 // GET /vote/myvotes?startIndex=5&stopIndex=20
 voteRouter.get('/myvotes',async(req,res,next)=>{
   let result = await Vote.findAndCountAll({
-    limit: req.query.stopIndex - req.query.startIndex || 1,//选出的数量
+    limit:  (req.query.stopIndex - req.query.startIndex) ,//选出的数量
     offset: req.query.startIndex,//从第几个开始
     where: {
       UserId: req.user.id

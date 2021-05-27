@@ -11,7 +11,7 @@ const voteRouter=require('./vote')
 
 
 const app= express()
-const PORT=8082
+const PORT=8088
 
 app.use((req,res,next)=>{
   console.log(req.method,req.url)
@@ -46,6 +46,8 @@ app.use('/', express.static(path.join(__dirname, './build')))
 app.use('/account',accountRouter)
 
 app.use('/vote',voteRouter)
+
+
 app.use("/icons",express.static(path.resolve(__dirname,"icons"))) 
 
 app.use('/uploads', express.static(path.resolve(__dirname, 'uploads')))
